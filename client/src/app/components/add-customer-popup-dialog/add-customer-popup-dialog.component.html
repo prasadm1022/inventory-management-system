@@ -1,0 +1,49 @@
+<h1 mat-dialog-title>Add New Customer</h1>
+
+<form #addCustomer="ngForm">
+  <div mat-dialog-content>
+    <mat-form-field appearance="outline">
+      <mat-label>Full Name</mat-label>
+      <input matInput placeholder="Full Name" name="name" required ngModel>
+      <mat-hint>(Mandatory)</mat-hint>
+    </mat-form-field>
+    &nbsp;&nbsp;
+    <mat-form-field appearance="outline">
+      <mat-label>NIC</mat-label>
+      <input matInput placeholder="NIC" name="nic" ngModel>
+      <mat-hint>(Optional)</mat-hint>
+    </mat-form-field>
+
+    <br/>
+    <mat-form-field appearance="outline" style="width: 100%;">
+      <mat-label>Address</mat-label>
+      <input matInput placeholder="Address" name="address" required ngModel>
+      <mat-hint>(Mandatory)</mat-hint>
+    </mat-form-field>
+
+    <br/>
+    <mat-form-field appearance="outline">
+      <mat-label>Phone Number</mat-label>
+      <input matInput type="number" placeholder="Ex : 771234567" name="phoneNo" required ngModel>
+      <mat-hint>(Mandatory)</mat-hint>
+    </mat-form-field>
+    &nbsp;&nbsp;
+    <mat-form-field appearance="outline">
+      <mat-label>Email</mat-label>
+      <input matInput type="email" placeholder="Email" name="email" ngModel>
+      <mat-hint>(Optional)</mat-hint>
+    </mat-form-field>
+  </div>
+
+  <div mat-dialog-actions>
+    <button
+      mat-button style="color: white;background-color: #673ab7"
+      (click)="onAddClick(addCustomer.value)">Add
+    </button>
+    <button mat-button (click)="onCancelClick()">Cancel</button>
+  </div>
+
+  <br/>
+  <span *ngIf="requestFailed" style="color: red">Request Failed. Reload the page & Try again!</span>
+</form>
+

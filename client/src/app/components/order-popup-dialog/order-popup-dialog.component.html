@@ -1,0 +1,45 @@
+<h1 mat-dialog-title><b>Order No : #{{order.id}}</b></h1>
+<hr/>
+
+<div mat-dialog-content *ngFor="let customer of customers | async">
+  <h2>Customer Details</h2>
+  <table>
+    <tr>
+      <td><b>Name</b></td>
+      <td>: {{customer.name}}</td>
+    </tr>
+    <tr>
+      <td><b>Phone No</b></td>
+      <td>: {{customer.phoneNo}}</td>
+    </tr>
+    <tr>
+      <td><b>Address</b></td>
+      <td>: {{customer.address}}</td>
+    </tr>
+    <tr>
+      <td><b>Email</b></td>
+      <td>: {{customer.email}}</td>
+    </tr>
+    <tr>
+      <td><b>NIC</b></td>
+      <td>: {{customer.nic}}</td>
+    </tr>
+  </table>
+  <hr/>
+
+  <h2>Ordered Items</h2>
+  <table>
+    <tr>
+      <th style="border: 1px solid;padding: 10px;">Code</th>
+      <th style="border: 1px solid;padding: 10px;">Item</th>
+      <th style="border: 1px solid;padding: 10px;">Quantity</th>
+      <th style="border: 1px solid;padding: 10px;">Price (Rs.)</th>
+    </tr>
+    <tr *ngFor="let entry of itemMap.entries()">
+      <td style="border: 1px solid;padding: 10px;text-align: left">{{entry[0].code}}</td>
+      <td style="border: 1px solid;padding: 10px;text-align: left">{{entry[0].name}} ({{entry[0].brand}})</td>
+      <td style="border: 1px solid;padding: 10px;text-align: center">{{entry[1]}}</td>
+      <td style="border: 1px solid;padding: 10px;text-align: right">{{entry[0].unitPrice * entry[1]}}</td>
+    </tr>
+  </table>
+</div>

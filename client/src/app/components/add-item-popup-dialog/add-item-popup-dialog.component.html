@@ -1,0 +1,55 @@
+<h1 mat-dialog-title>Add New Item</h1>
+
+<form #addItem="ngForm">
+  <div mat-dialog-content>
+    <mat-form-field appearance="outline">
+      <mat-label>Item Code</mat-label>
+      <input matInput placeholder="Item Code" name="code" required ngModel>
+      <mat-hint>(Mandatory)</mat-hint>
+    </mat-form-field>
+    &nbsp;&nbsp;
+    <mat-form-field appearance="outline">
+      <mat-label>Item Name</mat-label>
+      <input matInput placeholder="Item Name" name="name" required ngModel>
+      <mat-hint>(Mandatory)</mat-hint>
+    </mat-form-field>
+
+    <br/>
+    <mat-form-field appearance="outline">
+      <mat-label>Unit Price</mat-label>
+      <input matInput placeholder="Unit Price" name="unitPrice" required ngModel>
+      <mat-hint>(Mandatory)</mat-hint>
+    </mat-form-field>
+    &nbsp;&nbsp;
+    <mat-form-field appearance="outline">
+      <mat-label>Quantity</mat-label>
+      <input matInput type="number" placeholder="Quantity" name="quantity" required ngModel>
+      <mat-hint>(Mandatory)</mat-hint>
+    </mat-form-field>
+
+    <br/>
+    <mat-form-field appearance="outline">
+      <mat-label>Brand</mat-label>
+      <input matInput placeholder="Brand" name="brand" required ngModel>
+      <mat-hint>(Mandatory)</mat-hint>
+    </mat-form-field>
+
+    <br/>
+    <mat-form-field appearance="outline" style="width: 100%">
+      <mat-label>Special Notes</mat-label>
+      <input matInput placeholder="Special Notes" name="specialNotes" ngModel>
+      <mat-hint>(Optional)</mat-hint>
+    </mat-form-field>
+  </div>
+
+  <div mat-dialog-actions>
+    <button
+      mat-button style="color: white;background-color: #673ab7"
+      (click)="onAddClick(addItem.value)">Add
+    </button>
+    <button mat-button (click)="onCancelClick()">Cancel</button>
+  </div>
+
+  <br/>
+  <span *ngIf="requestFailed" style="color: red">Request Failed. Reload the page & Try again!</span>
+</form>

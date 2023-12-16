@@ -1,0 +1,51 @@
+<div>
+  <mat-tab-group [(selectedIndex)]="selectedTabIndex" (selectedTabChange)="onSelectedTabChange($event)">
+    <mat-tab label="{{NAME_ORDERS}}">
+      <ng-template mat-tab-label>
+        <mat-icon>shopping_cart</mat-icon>
+        <span>&nbsp;&nbsp;&nbsp;</span>{{NAME_ORDERS}}
+      </ng-template>
+
+      <br/>
+      <button
+        mat-raised-button color="primary"
+        (click)="onAddButtonClick($event,NAME_ORDERS)"
+        *ngIf="selectOrder">
+        Add New Order
+      </button>
+      <app-order-grid *ngIf="selectOrder"></app-order-grid>
+    </mat-tab>
+
+    <mat-tab label="{{NAME_INVENTORY}}">
+      <ng-template mat-tab-label>
+        <mat-icon>list</mat-icon>
+        <span>&nbsp;&nbsp;&nbsp;</span>{{NAME_INVENTORY}}
+      </ng-template>
+
+      <br/>
+      <button
+        mat-raised-button color="primary"
+        (click)="onAddButtonClick($event,NAME_INVENTORY)"
+        *ngIf="selectInventory">
+        Add New Item
+      </button>
+      <app-inventory-grid *ngIf="selectInventory"></app-inventory-grid>
+    </mat-tab>
+
+    <mat-tab label="{{NAME_CUSTOMERS}}">
+      <ng-template mat-tab-label>
+        <mat-icon>account_circle</mat-icon>
+        <span>&nbsp;&nbsp;&nbsp;</span>{{NAME_CUSTOMERS}}
+      </ng-template>
+
+      <br/>
+      <button
+        mat-raised-button color="primary"
+        (click)="onAddButtonClick($event,NAME_CUSTOMERS)"
+        *ngIf="selectCustomer">
+        Add New Customer
+      </button>
+      <app-customer-grid *ngIf="selectCustomer"></app-customer-grid>
+    </mat-tab>
+  </mat-tab-group>
+</div>

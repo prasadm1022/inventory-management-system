@@ -1,0 +1,59 @@
+<button mat-raised-button color="primary" (click)="printInvoice($event)">Print Receipt</button>
+<br/><br/>
+
+<div id="printArea">
+  <h1 mat-dialog-title><b>Delivery Details (Order No : #{{order.id}})</b></h1>
+  <hr/>
+
+  <div mat-dialog-content>
+    <table style="padding: 5px;" *ngFor="let customer of customers | async">
+      <tr>
+        <td style="padding: 5px;"><b>Delivery Address</b></td>
+        <td style="padding: 5px;">: {{customer.address}}</td>
+        <td style="padding: 5px;"><b>Order Date</b></td>
+        <td style="padding: 5px;">: {{order.dispatchDate | date: 'yyyy-MM-dd'}}</td>
+      </tr>
+      <tr>
+        <td style="padding: 5px;"><b>Buyer</b></td>
+        <td style="padding: 5px;">: {{customer.name}}</td>
+        <td style="padding: 5px;"><b>Order Items</b></td>
+        <td style="padding: 5px;">: {{itemCodes}}</td>
+      </tr>
+      <tr>
+        <td style="padding: 5px;"><b>Contact No</b></td>
+        <td style="padding: 5px;">: 0{{customer.phoneNo}}</td>
+        <td style="padding: 5px;"><b>Delivery Service</b></td>
+        <td style="padding: 5px;">: {{order.deliveryService}}</td>
+      </tr>
+      <tr>
+        <td style="padding: 5px;"></td>
+        <td style="padding: 5px;"></td>
+        <td style="padding: 5px;"><b>Hot Line</b></td>
+        <td style="padding: 5px;">: 0716992960 (Pradeep)</td>
+      </tr>
+      <tr>
+        <td style="padding: 5px;"></td>
+        <td style="padding: 5px;"></td>
+        <td style="padding: 5px;"><b>Facebook</b></td>
+        <td style="padding: 5px;">: https://www.facebook.com</td>
+      </tr>
+    </table>
+    <hr/>
+
+    <table style="padding: 5px;">
+      <tr>
+        <td rowspan="2"><img style="width: 100px" alt="Angular Logo" src="assets/img/logo.jpg"/></td>
+        <td rowspan="2" style="padding: 5px; text-align: center;">&nbsp;&nbsp;&nbsp;</td>
+        <td style="padding: 5px; text-align: center;">Total Price :</td>
+        <td rowspan="3" style="padding: 5px; text-align: center;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+        <td style="padding: 5px; text-align: center;"></td>
+      </tr>
+      <tr>
+        <td style="padding: 5px;text-align: center;"><h1>Rs.{{order.totalPrice}}/=</h1></td>
+        <td style="padding: 5px;text-align: right;">Checked By : ...................................................
+        </td>
+      </tr>
+    </table>
+    <hr/>
+  </div>
+</div>

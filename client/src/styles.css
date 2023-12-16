@@ -1,0 +1,47 @@
+@import "~ag-grid-community/dist/styles/ag-grid.css";
+@import "~ag-grid-community/dist/styles/ag-theme-alpine.css";
+
+@import '~@angular/material/prebuilt-themes/deeppurple-amber.css';
+
+/* start - override mat-toolbar styles */
+
+.mat-toolbar-multiple-rows {
+  min-height: 100px
+}
+
+.mat-toolbar-row,
+.mat-toolbar-single-row {
+  height: 100px
+}
+
+@media (max-width: 599px) {
+  .mat-toolbar-multiple-rows {
+    min-height: 100px
+  }
+
+  .mat-toolbar-row, .mat-toolbar-single-row {
+    height: 100px
+  }
+}
+
+/* end - override mat-toolbar styles */
+
+/* start - printable area */
+
+@media print {
+  body * {
+    visibility: hidden;
+  }
+
+  #printArea, #printArea * {
+    visibility: visible;
+  }
+
+  #printArea {
+    position: absolute;
+    left: 0;
+    top: 0;
+  }
+}
+
+/* end - printable area */

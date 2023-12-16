@@ -1,0 +1,19 @@
+<div class="grid-wrapper" id="customer-grid-div">
+  <ag-grid-angular
+    id="customerGrid"
+    class="ag-theme-alpine"
+    style="width: 100%; height: 600px;"
+    [modules]="modules"
+    [columnDefs]="columnDefs"
+    [defaultColDef]="defaultColDef"
+    [rowData]="rowData"
+    [rowSelection]="rowSelection"
+    [pagination]="true"
+    [paginationPageSize]="10"
+    (selectionChanged)="onSelectionChanged($event)"
+    (firstDataRendered)="onFirstDataRendered($event)"
+    (cellValueChanged)="onCellValueChanged($event)"
+    [frameworkComponents]="frameworkComponents"
+    (gridReady)="onGridReady($event)">
+  </ag-grid-angular>
+</div>

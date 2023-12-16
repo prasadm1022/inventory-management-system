@@ -1,0 +1,41 @@
+<h1 mat-dialog-title><b>Order History</b></h1>
+
+<div mat-dialog-content>
+  <div class="grid-wrapper" id="order-grid-div">
+    <ag-grid-angular
+      id="orderGrid"
+      class="ag-theme-alpine"
+      style="width:1000px;height: 600px;"
+      [modules]="modules"
+      [columnDefs]="columnDefs"
+      [defaultColDef]="defaultColDef"
+      [rowData]="rowData"
+      [rowSelection]="rowSelection"
+      [pagination]="true"
+      [paginationPageSize]="10"
+      (selectionChanged)="onSelectionChanged($event)"
+      (firstDataRendered)="onFirstDataRendered($event)"
+      [frameworkComponents]="frameworkComponents"
+      (gridReady)="onGridReady($event)">
+    </ag-grid-angular>
+  </div>
+
+  <!--  <table style="border: 1px solid;padding: 5px;" *ngIf="orders.length>0">-->
+  <!--    <tr>-->
+  <!--      <th style="border: 1px solid;padding: 5px;">Order ID</th>-->
+  <!--      <th style="border: 1px solid;padding: 5px;">Delivery Service</th>-->
+  <!--      <th style="border: 1px solid;padding: 5px;">Delivery Area</th>-->
+  <!--      <th style="border: 1px solid;padding: 5px;">Total Price (Rs.)</th>-->
+  <!--      <th style="border: 1px solid;padding: 5px;">Date</th>-->
+  <!--      <th style="border: 1px solid;padding: 5px;">Order Status</th>-->
+  <!--    </tr>-->
+  <!--    <tr *ngFor="let entry of orders">-->
+  <!--      <td style="border: 1px solid;padding: 5px;text-align: center">{{entry.id}}</td>-->
+  <!--      <td style="border: 1px solid;padding: 5px;text-align: center">{{entry.deliveryService}}</td>-->
+  <!--      <td style="border: 1px solid;padding: 5px;text-align: center">{{entry.deliveryArea}}</td>-->
+  <!--      <td style="border: 1px solid;padding: 5px;text-align: right">{{entry.totalPrice}}</td>-->
+  <!--      <td style="border: 1px solid;padding: 5px;text-align: right">{{entry.dispatchDate | date: 'yyyy-MM-dd'}}</td>-->
+  <!--      <td style="border: 1px solid;padding: 5px;text-align: center">{{entry.status}}</td>-->
+  <!--    </tr>-->
+  <!--  </table>-->
+</div>

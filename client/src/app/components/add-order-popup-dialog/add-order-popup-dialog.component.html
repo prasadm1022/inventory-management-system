@@ -1,0 +1,88 @@
+<h1 mat-dialog-title>Add New Order</h1>
+
+<form #addOrder="ngForm">
+  <div mat-dialog-content>
+    <mat-form-field appearance="outline" style="width: 100%">
+      <mat-label>Select Customer</mat-label>
+      <input matInput type="number" placeholder="Search By Phone No" name="phoneNo" required ngModel
+             (keyup)="onPhoneNoTextChange($event)"
+             [matAutocomplete]="autoGroup">
+      <mat-autocomplete #autoGroup="matAutocomplete">
+        <mat-option *ngFor="let customer of customers | async" [value]="customer.phoneNo">
+          {{customer.name}} ({{customer.phoneNo}})
+        </mat-option>
+      </mat-autocomplete>
+      <mat-hint>(Mandatory)</mat-hint>
+    </mat-form-field>
+
+    <br/>
+    <mat-form-field appearance="outline">
+      <mat-label>Delivery Area</mat-label>
+      <mat-select name="deliveryArea" required ngModel>
+        <mat-option *ngFor="let area of deliveryAreas" value="{{area}}">{{area}}</mat-option>
+      </mat-select>
+      <mat-hint>(Mandatory)</mat-hint>
+    </mat-form-field>
+    &nbsp;&nbsp;
+    <mat-form-field appearance="outline">
+      <mat-label>Delivery Service</mat-label>
+      <mat-select name="deliveryService" required ngModel>
+        <mat-option *ngFor="let service of deliveryServices" value="{{service}}">{{service}}</mat-option>
+      </mat-select>
+      <mat-hint>(Mandatory)</mat-hint>
+    </mat-form-field>
+
+    <h3 style="color: green">Total Price : Rs.{{totalPrice + deliveryCharges}}/=</h3>
+    <h4>(Delivery Charges : Rs.{{deliveryCharges}}/=)</h4>
+
+    <mat-form-field appearance="outline">
+      <mat-label>Item</mat-label>
+      <mat-select name="item" ngModel>
+        <mat-option *ngFor="let item of items | async" value="{{item.id}}">{{item.name}} ({{item.brand}})</mat-option>
+      </mat-select>
+      <mat-hint>(Select an item to be added)</mat-hint>
+    </mat-form-field>
+    &nbsp;&nbsp;
+    <mat-form-field appearance="outline">
+      <mat-label>Quantity</mat-label>
+      <input matInput type="number" placeholder="Quantity" name="quantity" ngModel>
+    </mat-form-field>
+    &nbsp;&nbsp;
+    <button mat-button
+            style="color: white;background-color: #673ab7;"
+            (click)="onAddItemClick(addOrder.value)">
+      Add Item
+    </button>
+    &nbsp;&nbsp;
+    <button mat-button
+            style="background-color: lightgrey;"
+            (click)="onResetItemsClick($event)">
+      Reset Items
+    </button>
+
+    <table *ngIf="orderItems.size > 0">
+      <tr>
+        <th style="border: 1px solid;padding: 10px;">Item</th>
+        <th style="border: 1px solid;padding: 10px;">Quantity</th>
+      </tr>
+      <tr *ngFor="let entry of displayItems.entries()">
+        <td style="border: 1px solid;padding: 10px;text-align: left">{{entry[0]}}</td>
+        <td style="border: 1px solid;padding: 10px;text-align: left">{{entry[1]}}</td>
+      </tr>
+    </table>
+  </div>
+
+  <div mat-dialog-actions>
+    <button mat-button
+            style="color: white;background-color: #673ab7;"
+            (click)="onAddClick(addOrder.value)">
+      Add
+    </button>
+    <button mat-button (click)="onCancelClick($event)">Cancel</button>
+  </div>
+
+  <br/>
+  <span *ngIf="requestFailed" style="color: red">Request Failed. Reload the page & Try again!</span>
+
+  <span *ngIf="invalidCustomer" style="color: red">Invalid Customer Selection. Try again!</span>
+</form>
